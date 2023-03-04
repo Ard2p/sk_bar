@@ -85,15 +85,15 @@ stepName.on('text', (ctx) => {
 
 const stepPhone = new Composer()
 stepPhone.on('text', async (ctx) => {
-  ctx.wizard.state.phone = ctx.message.text
 
-  // await DB.reservation.createReserv({
-  //   date: ctx.wizard.state.date,
-  //   visitors: ctx.wizard.state.visitors,
-  //   table: ctx.wizard.state.table,
-  //   name: ctx.wizard.state.name,
-  //   phone: ctx.wizard.state.phone
-  // })
+  const regex = /^[7|8]?[-. ]?\(?[0-9]{3}\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/
+  console.log(ctx.message.text.match(regex))
+  if (!ctx.message.text.match(regex)) {
+    ctx.deleteMessage().catch(e => { })
+    return
+  }
+
+  ctx.wizard.state.phone = ctx.message.text
 
   await DB.reservation.create({
     tg_id: ctx.wizard.state?.tg_id || null,

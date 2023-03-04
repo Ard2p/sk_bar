@@ -21,7 +21,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
         },
         status: {
-            type: Sequelize.TINYINT,
+            type: Sequelize.TINYINT           
         }
     }, {
         indexes: [{

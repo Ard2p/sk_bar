@@ -72,7 +72,14 @@ bot.action(/delete_(.+)_(.+)/, async ctx => {
   let table = await DB.reservation.findOne({ where: { date: ctx.match[1], table: ctx.match[2] } })
   if (!table) return
 
-  await DB.reservation.update({ status: 2 }, {
+  // await DB.reservation.update({ status: 2 }, {
+  //   where: {
+  //     date: ctx.match[1],
+  //     table: ctx.match[2]
+  //   }
+  // })
+
+  await DB.reservation.destroy({
     where: {
       date: ctx.match[1],
       table: ctx.match[2]
