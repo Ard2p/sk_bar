@@ -2,6 +2,7 @@ const { Telegraf, session, Scenes: { Stage } } = require('telegraf')
 
 const DB = require('./models')
 const Menu = require('./menu')
+const io = require('./socket')
 const reservationScene = require('./reservationScene')
 
 const config = require('./config.json')
@@ -100,6 +101,7 @@ bot.action(/delete_(.+)_(.+)/, async ctx => {
 DB.sequelize.sync().then(() => {
   console.log('Synced db.')
   bot.launch()
+  io.listen(4747)
 }).catch((err) => {
   console.log('Failed to sync db: ' + err.message)
 })
