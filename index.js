@@ -3,9 +3,6 @@ const DB = require('./models')
 const web = require('./web')
 const bot = require('./bot')
 
-
-
-
 DB.sequelize.sync().then(() => {
   console.log('Synced db.')
   bot.launch()
@@ -14,6 +11,7 @@ DB.sequelize.sync().then(() => {
   // web.listen(webPort, () => {
   //   console.log(`Up and Running on port ${webPort}- This is Customer service`);
   // })
+  bot.telegram.sendMessage('319121362', 'Бот запущен')
 }).catch((err) => {
   console.log('Failed to sync db: ' + err.message)
 })
