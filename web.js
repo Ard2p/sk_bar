@@ -35,7 +35,7 @@ var httpsServer = https.createServer(credentials, app)
 
 httpServer.listen(4748)
 httpsServer.listen(4747, () => {
-    console.log(`Up and Running on port 4747 - This is Customer service`);
+    console.log(`HTTPS Up and Running on port 4747`);
     bot.telegram.sendMessage('319121362', 'Web запущен')
 })
 
