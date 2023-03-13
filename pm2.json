@@ -1,7 +1,7 @@
 {
     "apps": [{
         "name": "SK Bot",
-        "script": "./bot.js",
+        "script": "./index.js",
         "watch": true,
         "env": {
             "NODE_ENV": "development"
