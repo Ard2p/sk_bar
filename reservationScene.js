@@ -87,7 +87,6 @@ const stepPhone = new Composer()
 stepPhone.on('text', async (ctx) => {
 
   const regex = /^[7|8]?[-. ]?\(?[0-9]{3}\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/
-  console.log(ctx.message.text.match(regex))
   if (!ctx.message.text.match(regex)) {
     ctx.deleteMessage().catch(e => { })
     return
